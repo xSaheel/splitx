@@ -1,0 +1,75 @@
+.header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 75px;
+    background-color: black;
+    color: #e5e5e5;
+
+    .links {
+        display: inline-flex;
+    }
+
+    a {
+        margin: 0 2rem;
+        cursor: pointer;
+        @media (max-width: 720px) {
+            display: none;
+        }
+    }
+
+    .login:hover, a:hover {
+        color: #a944d8;
+    }
+
+    .login {
+        cursor: pointer;
+        @media (max-width: 720px) {
+            display: none;
+        }
+    }
+}
+
+.footer {
+    position: relative;
+    bottom: 0;
+    min-height: 300px;
+    background-color: black;
+    color: #e5e5e5;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 2rem 5rem;
+
+    @media (max-width: 720px) {
+        padding: 2rem 2rem;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+    }
+
+    .brand {
+        display: flex;
+        flex-direction: column;
+        * {
+            margin-top: 0.5rem;
+            margin-right: 1rem;
+            width: max-content;
+        }
+
+        .social {
+            display: flex;
+            cursor: pointer;
+        }
+    }
+}
+
+.hamMenuIcon {
+    @media (min-width: 720px) {
+        display: none;
+    }
+}
+
+.aboutUs {
+    @media (max-width: 720px) {
+        margin-top: 1rem;
+    }
+}

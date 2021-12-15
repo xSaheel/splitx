@@ -7,7 +7,7 @@ const Header = () => {
     const router = useRouter();
     return (
         <div className={classes.header}>
-            <h2  onClick={() => router.push("/")}>Split-X</h2>
+            <h2 onClick={() => router.push("/")} style={{cursor: "pointer"}}>Split-X</h2>
             <div className={classes.links}>
                 <a>How it Works?</a>
                 <a>Support Me</a>

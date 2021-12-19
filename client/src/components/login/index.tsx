@@ -1,13 +1,8 @@
 import { Button } from '@mui/material';
 import React, { useState } from 'react'
+import { IUserData } from '../../types';
+import { handleRegistration } from './api';
 import classes from "./styles.module.scss";
-
-interface IUserData {
-    firstName?: string;
-    lastName?: string;
-    email?: string;
-    password?: string;
-}
 
 const Login = () => {
     const [isLoginPage, setIsLoginPage] = useState<boolean>(true);
@@ -15,24 +10,24 @@ const Login = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('userData: ', userData);
-    }
+        if (isLoginPage) {
+            console.log('userData: ', userData);
+        } else {
+            handleRegistration(userData);
+        }
+    };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        // const property = e.target.name;
-        // console.log('property: ', property);
-        // const change = {property: e.target.value};
-        // console.log('change: ', change);
         setUserData({...userData, [e.target.name]: e.target.value });
-    }
+    };
 
     return (
         <div className={classes.root}>
             <div className={classes.container}>
                 <h2>Login / SignUp</h2>
                 <form>
-                    {!isLoginPage && <input placeholder="FirstName" type="text" name="FirstName" onChange={handleChange} />}
-                    {!isLoginPage && <input placeholder="LastName" type="text" name="LastName" onChange={handleChange}  />}
+                    {!isLoginPage && <input placeholder="FirstName" type="text" name="firstName" onChange={handleChange} />}
+                    {!isLoginPage && <input placeholder="LastName" type="text" name="lastName" onChange={handleChange}  />}
                     <input placeholder="Email" type="email" name="email" onChange={handleChange}  /> 
                     <input placeholder="Password" type="password" name="password" onChange={handleChange}  />
                     <Button onClick={handleSubmit} className={classes.btn}>Lets Go!</Button>

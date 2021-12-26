@@ -10,7 +10,7 @@ const Footer = () => {
     return (
         <div className={classes.footer}>
             <div className={classes.brand}>
-                <h2>Welcome to Split-X</h2>
+                <h2>Welcome to Split-X ©</h2>
                 <div className={classes.social}>
                     <GitHubIcon onClick={() => router.push("https://github.com/xSaheel")} />
                     <LinkedInIcon onClick={() => router.push("https://www.linkedin.com/in/saheeldas21/")} />

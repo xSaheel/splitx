@@ -1,8 +1,11 @@
+@import "../../../styles//root.module.scss";
+
 .root {
     display: grid;
     // background-image: linear-gradient(to bottom right, #e100ff, #23ca1d);
     // background-image: linear-gradient(to bottom right, #9900ff, #8fca1d);
-    background-image: linear-gradient(to bottom right, #3b00ff, #cab51d);
+    // background-image: linear-gradient(to bottom right, #3b00ff, #cab51d);
+    background-image: linear-gradient(-20deg,#a8edea,#fbfcdb);
     grid-template-columns: 50% 50%;
     width: 100%;
     height: calc(100vh - 75px);
@@ -17,7 +20,7 @@
 
     .hero {
         padding-right: 3rem;
-        color: white;
+        color: $foreground-dark-faded;
         
         h1 {
             font-size: 4rem;
@@ -40,8 +43,8 @@
 
 .getStarted {
     border-radius: 3rem;
-    background-color: black;
-    color: #e5e5e5;
+    background-color: $active-yellow;
+    color: $foreground-dark;
     text-transform: capitalize;
     position: absolute;
     bottom: 0;
@@ -58,6 +61,5 @@
 }
 
 .getStarted:hover {
-    background-color: #5137a5;
-    transition: 0.6s;
+    background-color: $active-yellow;
 }

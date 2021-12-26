@@ -1,10 +1,14 @@
+@import "../../../styles/root.module.scss";
+
 .header {
     display: flex;
     justify-content: space-around;
     align-items: center;
     height: 75px;
-    background-color: black;
-    color: #e5e5e5;
+    background-color: $background-light;
+    color: $foreground-dark;
+    box-shadow: 0 2px 6px rgb(36 50 68 / 6%);
+    border-bottom: 1px solid rgba(36,50,68,.1);
 
     .links {
         display: inline-flex;
@@ -12,6 +16,7 @@
 
     a {
         margin: 0 2rem;
+        font-weight: 500;
         cursor: pointer;
         @media (max-width: 720px) {
             display: none;
@@ -23,6 +28,9 @@
     }
 
     .login {
+        border: 1px solid;
+        padding: 0.5rem 2rem;
+        border-radius: 3rem;
         cursor: pointer;
         @media (max-width: 720px) {
             display: none;
@@ -34,8 +42,8 @@
     position: relative;
     bottom: 0;
     min-height: 300px;
-    background-color: black;
-    color: #e5e5e5;
+    background-color: $background-light;
+    color: $foreground-dark;
     display: grid;
     grid-template-columns: 1fr 1fr;
     padding: 2rem 5rem;

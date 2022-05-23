@@ -2,11 +2,13 @@ import axios from "axios";
 import { BASE_URL } from '../../constants';
 import { IUserData } from "../../types";
 
+const url = `${BASE_URL}/user/`;
+
 export const handleRegistration = async (userData: IUserData) => {
     console.log('userData: ', userData);
-    const url = `${BASE_URL}/register`;
+    // const url = `${BASE_URL}/register`;
     try {
-        const response = await axios.post(url, 
+        const response = await axios.post(url + "register", 
             JSON.stringify(userData),
             { headers: { "Content-Type": "application/json" }}
         );
@@ -18,9 +20,9 @@ export const handleRegistration = async (userData: IUserData) => {
 }   
 
 export const handleLogin = async (email: string, password: string) => {
-    const url = `${BASE_URL}/login`;
+    // const url = `${BASE_URL}/login`;
     try {
-        const response = await axios.post(url, 
+        const response = await axios.post(url + "login", 
             { email: email, password: password }
         );
         console.log('response: ', response.data);
@@ -31,7 +33,7 @@ export const handleLogin = async (email: string, password: string) => {
 }   
 
 export const getUserData = async () => {
-    const url = `${BASE_URL}/user`;
+    // const url = `${BASE_URL}/user`;
     try {
         const response = await axios.get(url);
         return response.data;

@@ -20,7 +20,7 @@ const Footer = () => {
             <div className={classes.aboutUs}>
                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Commodi esse obcaecati blanditiis debitis exercitationem, earum voluptatibus. Minus quidem ducimus nobis dignissimos atque laboriosam sint et quod illum quisquam! Incidunt, praesentium.</p>
                 <br />
-                <p>@Dev -- Saheel Das</p>
+                <p>Created with &#10084;&#65039; by Saheel Das</p>
             </div>
         </div>
     )

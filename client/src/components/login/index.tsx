@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import React, { useState, useRef } from 'react'
 import { IUserData } from '../../types';
 import { handleLogin, handleRegistration } from './api';
+import { v4 as uuid } from 'uuid';
 import classes from "./styles.module.scss";
 
 const Login = () => {
@@ -65,6 +66,10 @@ const Login = () => {
         }
     };
 
+    const handleContinueAsGuest = () => {
+        // const guestId = uuid().substring(0, 8);
+    }
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setUserData({...userData, [e.target.name]: e.target.value });
     };
@@ -85,13 +90,13 @@ const Login = () => {
                     {!isLoginPage && <input placeholder="LastName" type="text" name="lastName" onChange={handleChange} value={userData?.lastName || ""}  />}
                     <input placeholder="Email" type="email" name="email" onChange={handleChange} value={userData?.email || ""} /> 
                     <input placeholder="Password" type="password" name="password" onChange={handleChange} value={userData?.password || ""} />
-                    <Button onClick={handleSubmit} className={classes.btn} endIcon={isLoading && <CircularProgress color="warning" size={18} />}>Lets Go!</Button>
+                    <Button onClick={handleSubmit} className={classes.btn} endIcon={isLoading && <CircularProgress color="warning" size={18} />}>Login</Button>
                 </form>
                 <div className={classes.ctaContainer}>
                     {isLoginPage && (
                         <>
                             <p>Or</p>
-                            <Button className={classes.btn} endIcon={<DoubleArrowIcon />}>Continue as Guest</Button>
+                            <Button className={classes.btn} endIcon={<DoubleArrowIcon />} onClick={handleContinueAsGuest}>Continue as Guest</Button>
                         </>
                     )}
                     <Button className={classes.dontHaveAccount} onClick={handlePageChange}>{isLoginPage ? "Dont Have an account? Sign Up" : "Already have an account? Login"}</Button>

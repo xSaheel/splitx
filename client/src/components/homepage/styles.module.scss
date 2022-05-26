@@ -2,13 +2,10 @@
 
 .root {
     display: grid;
-    // background-image: linear-gradient(to bottom right, #e100ff, #23ca1d);
-    // background-image: linear-gradient(to bottom right, #9900ff, #8fca1d);
-    // background-image: linear-gradient(to bottom right, #3b00ff, #cab51d);
     background-image: linear-gradient(-20deg,#a8edea,#fbfcdb);
     grid-template-columns: 50% 50%;
     width: 100%;
-    height: calc(100vh - 75px);
+    min-height: calc(100vh - 75px);
     align-items: center;
     padding: 0 5rem;
     overflow: hidden;
@@ -29,6 +26,9 @@
             @media (max-width: 720px) {
                 font-size: 2rem;
             }
+        }
+        @media (max-width: 720px) {
+            padding: 0;
         }
     }
 

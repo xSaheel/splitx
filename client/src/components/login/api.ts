@@ -5,39 +5,38 @@ import { IUserData } from "../../types";
 const url = `${BASE_URL}/user/`;
 
 export const handleRegistration = async (userData: IUserData) => {
-    console.log('userData: ', userData);
-    // const url = `${BASE_URL}/register`;
+    const headers = { "Content-Type": "application/json" }
     try {
-        const response = await axios.post(url + "register", 
+        const res = await axios.post(url + "register", 
             JSON.stringify(userData),
-            { headers: { "Content-Type": "application/json" }}
+            { headers }
         );
-        console.log('response: ', response);
-        return response.data;
+        return res;
     } catch (err) {
-        console.log('err: ', err);
+        return err.response;
     }
 }   
 
 export const handleLogin = async (email: string, password: string) => {
-    // const url = `${BASE_URL}/login`;
     try {
-        const response = await axios.post(url + "login", 
+        const res = await axios.post(url + "login", 
             { email: email, password: password }
         );
-        console.log('response: ', response.data);
-        return response.data;
+        return res;
     } catch (err) {
-        console.log('err: ', err);
+        return err.response;
     }
 }   
 
 export const getUserData = async () => {
-    // const url = `${BASE_URL}/user`;
+    const accessToken = localStorage.getItem("accessToken");
+    const headers = { 
+        Authorization: `Bearer ${accessToken}`
+    };
     try {
-        const response = await axios.get(url);
-        return response.data;
+        const res = await axios.get(url, { headers });
+        return res.data;
     } catch (err) {
-        console.log('err: ', err);
+        return err.response;
     }
 }

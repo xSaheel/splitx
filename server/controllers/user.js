@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+const { v4 : uuidv4 } = require("uuid");
 const asyncHandler = require("express-async-handler");
 const User = require("../models/user.model");
 
@@ -21,7 +22,10 @@ const registerUser = asyncHandler(async (req, res) => {
     const salt = await bcrypt.genSalt();
     const hashedPassword = await bcrypt.hash(password, salt);
 
-    const user = await User.create({ ...req.body, password: hashedPassword });
+    const avatarSeed = uuidv4().substring(0, 9);
+    const avatarUrl = generateAvatarUrl(avatarSeed);
+
+    const user = await User.create({ ...req.body, password: hashedPassword, avatarUrl });
     if (user) {
         res.status(201).json({ 
             message: "User Registered Successfully", 
@@ -74,8 +78,14 @@ const getUserData = asyncHandler(async (req, res) => {
     return res.status(200).json(req.user);
 });
 
+// Utils
+
 const generateToken = (id) => {
     return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: "30d" }); 
+}
+
+const generateAvatarUrl = (seed) => {
+    return `https://avatars.dicebear.com/api/adventurer-neutral/${seed}.png`;
 }
 
 module.exports = {

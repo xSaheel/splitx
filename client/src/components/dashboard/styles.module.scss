@@ -1,3 +1,5 @@
+@import "../../../styles/root.module.scss";
+
 .root {
     display: flex;
     padding: 2rem;
@@ -37,5 +39,12 @@
         h2 {
             margin: 1rem 0;
         }
+    }
+
+    .roomsContainer {
+        height: 120px;
+        width: 100%;
+        border: 1px dashed $foreground-dark;
+        border-radius: 2rem;
     }
 }

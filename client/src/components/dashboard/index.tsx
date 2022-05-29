@@ -4,8 +4,6 @@ import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react'
 import { IUserData } from '../../types';
 import { getUserData } from '../login/api';
-import { createAvatar } from '@dicebear/avatars';
-import * as style from '@dicebear/adventurer-neutral';
 import classes from "./styles.module.scss";
 
 const DashBoard = () => {
@@ -23,7 +21,8 @@ const DashBoard = () => {
                 setUserData({
                     email: res.email,
                     firstName: res.firstName,
-                    lastName: res.lastName
+                    lastName: res.lastName,
+                    avatarUrl: res.avatarUrl
                 })
             }
             fetchUserData();
@@ -32,21 +31,12 @@ const DashBoard = () => {
         }
     }, [])
 
-    const generateAvatar = () => {
-        const avatar = createAvatar(style, {
-            seed: accessToken.substring(0, 9),
-            dataUri: true
-        });
-        return avatar;
-    };
-    
-
     return (
         <>
-            {accessToken && (
+            {accessToken && userData && (
                 <div className={classes.root}>
                     <div className={classes.profileContainer}>
-                        <Image src={generateAvatar()} alt="profile-picture" height={200} width={200} className={classes.avatar} />
+                        <Image src={userData?.avatarUrl} alt="avatar" height={200} width={200} className={classes.avatar} priority />
                         <h2 className={classes.userName}>{userData?.firstName} {userData?.lastName}</h2>
                         <p>{userData?.email}</p>
                     </div>
@@ -55,11 +45,11 @@ const DashBoard = () => {
                         <Divider />
                         <div>
                             <h2>My Rooms</h2>
-                            <div style={{ height: "120px", width: "100%", border: "1px dashed #243244", borderRadius: "2rem" }} />
+                            <div className={classes.roomsContainer} />
                         </div>
                         <div>
                             <h2>My Invites</h2>
-                            <div style={{ height: "120px", width: "100%", border: "1px dashed #243244", borderRadius: "2rem" }} />
+                            <div className={classes.roomsContainer} />
                         </div>
                     </div>
                 </div>

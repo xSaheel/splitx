@@ -12,13 +12,6 @@ export const useLogin = () => {
     const emailValidation = useRef(/^(.+)@(.+)$/);
     const router = useRouter();
 
-    useEffect(() => {
-        const accessToken = localStorage.getItem("accessToken");
-        if (!accessToken) {
-            router.push("/");
-        } 
-    }, []);
-
     const validateCredentials = () => {
         if(userData.email === "" || userData.password === "" || userData?.firstName === "" || userData?.lastName === "") {
             setErrorMessage("All fields are Mandatory");

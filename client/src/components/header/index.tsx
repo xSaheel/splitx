@@ -3,8 +3,16 @@ import MenuIcon from '@mui/icons-material/Menu';
 import classes from "./styles.module.scss";
 import { useRouter } from 'next/router';
 
-const Header = () => {
+const Header = ({ accessToken } : { accessToken: String }) => {
     const router = useRouter();
+    const handleAuth = () => {
+        if (accessToken) {
+            localStorage.removeItem("accessToken");
+            router.push("/");
+        } else {
+            router.push("/auth");
+        }
+    };
     return (
         <div className={classes.header}>
             <h2 onClick={() => router.push("/")} style={{cursor: "pointer"}}>Split-X</h2>
@@ -13,7 +21,7 @@ const Header = () => {
                 <a>Support Me</a>
                 <a>Learn More</a>
             </div>
-            <p className={classes.login} onClick={() => router.push("/auth")}>Login</p>
+            <button className={classes.login} onClick={handleAuth}>{accessToken ? "Logout" : "Login"}</button>
             <MenuIcon className={classes.hamMenuIcon} />
         </div>
     )
